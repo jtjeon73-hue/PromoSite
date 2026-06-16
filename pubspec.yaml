@@ -1,0 +1,18 @@
+name: flutter_promo_site
+
+description: 소통웨어 디지털랩 — 산업자동화 모니터링·디지털 서비스 홍보 사이트
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  url_launcher: ^6.3.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/

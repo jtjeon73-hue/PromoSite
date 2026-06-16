@@ -1,0 +1,12 @@
+{
+  "name": "홍보 영업용 Flutter 사이트",
+  "short_name": "PromoSite",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "description": "Flutter/Dart promotional website sample",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "icons": []
+}
