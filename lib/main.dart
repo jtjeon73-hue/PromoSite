@@ -153,7 +153,7 @@ class TopNavigation extends StatelessWidget {
       color: Colors.white,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final isMobile = constraints.maxWidth < 900;
+          final showMenu = constraints.maxWidth >= 900;
           return Row(
             children: [
               const Icon(Icons.hub_outlined, color: Color(0xFF2563EB)),
@@ -163,10 +163,9 @@ class TopNavigation extends StatelessWidget {
                 style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800),
               ),
               const Spacer(),
-              if (!isMobile) ...[
-                _NavItem('모니터링', () => _tap('monitoring')),
-                _NavItem('스마트팜', () => _tap('smartfarm')),
-                _NavItem('앱개발', () => _tap('apps')),
+              if (showMenu) ...[
+                for (final item in ServicesCatalog.mainMenuItems)
+                  _NavItem(item.label, () => _tap(item.id)),
                 const SizedBox(width: 16),
               ],
               FilledButton(
@@ -189,8 +188,8 @@ class TopNavigation extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Text(label, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -227,7 +226,7 @@ class HeroSection extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const _Badge('Monitoring · Smart Farm · App · Data · AI'),
+                    const _Badge('Automation · Smart Farm · Energy · YouTube · Store · App'),
                     const SizedBox(height: 24),
                     Text(
                       ServicesCatalog.tagline.replaceAll('\n', ' '),
@@ -240,9 +239,9 @@ class HeroSection extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     const Text(
-                      '산업자동화 모니터링, 스마트팜 관제, 다양한 앱·소프트웨어 개발을 '
+                      '산업자동화, 스마트팜·농촌, 에너지관리, 유튜브, 스토어, 앱개발을 '
                       '현장 경험을 바탕으로 연결합니다. 공장 Tool·PLC·MES부터 '
-                      '농장 센서·제어, 모바일·웹·Windows까지 맞춤 개발합니다.',
+                      '농장 센서·제어, 콘텐츠·커머스, 모바일·웹·Windows까지 맞춤 개발합니다.',
                       style: TextStyle(
                         color: Color(0xFFE0E7FF),
                         fontSize: 17,
@@ -350,57 +349,30 @@ class BusinessMixSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const ids = ['monitoring', 'smartfarm', 'apps'];
     return _Section(
       title: '주요 사업 영역',
-      subtitle: '산업 모니터링 · 스마트팜 · 앱 개발을 현장 맞춤으로 수행합니다.',
+      subtitle: '산업자동화 · 스마트팜·농촌 · 에너지관리 · 유튜브 · 스토어 · 앱개발을 현장 맞춤으로 수행합니다.',
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final isWide = constraints.maxWidth > 800;
-          if (isWide) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _MixCard(
-                  area: ServicesCatalog.businessMix[0],
-                  service: ServicesCatalog.all[0],
-                  onTap: () => onTap(ids[0]),
-                  tall: true,
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: _MixCard(
-                        area: ServicesCatalog.businessMix[1],
-                        service: ServicesCatalog.all[1],
-                        onTap: () => onTap(ids[1]),
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: _MixCard(
-                        area: ServicesCatalog.businessMix[2],
-                        service: ServicesCatalog.all[2],
-                        onTap: () => onTap(ids[2]),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            );
-          }
-          return Column(
+          final cardWidth = constraints.maxWidth > 960
+              ? (constraints.maxWidth - 40) / 3
+              : constraints.maxWidth > 640
+                  ? (constraints.maxWidth - 20) / 2
+                  : constraints.maxWidth;
+
+          return Wrap(
+            spacing: 20,
+            runSpacing: 20,
             children: [
-              for (var i = 0; i < 3; i++) ...[
-                if (i > 0) const SizedBox(height: 16),
-                _MixCard(
-                  area: ServicesCatalog.businessMix[i],
-                  service: ServicesCatalog.all[i],
-                  onTap: () => onTap(ids[i]),
+              for (final area in ServicesCatalog.businessMix)
+                SizedBox(
+                  width: cardWidth,
+                  child: _MixCard(
+                    area: area,
+                    service: ServicesCatalog.byId(area.id)!,
+                    onTap: () => onTap(area.id),
+                  ),
                 ),
-              ],
             ],
           );
         },
@@ -490,8 +462,8 @@ class ServiceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Section(
-      title: '개발 서비스',
-      subtitle: '항목을 클릭하면 상세 페이지로 이동합니다. 콘텐츠는 순차적으로 채웁니다.',
+      title: '6개 주력 사업',
+      subtitle: '항목을 클릭하면 각 사업 상세 페이지로 이동합니다. 콘텐츠는 순차적으로 채웁니다.',
       child: Wrap(
         spacing: 20,
         runSpacing: 20,
@@ -562,13 +534,16 @@ class AreaHighlightsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final monitoring = ServicesCatalog.byId('monitoring')!;
     final smartfarm = ServicesCatalog.byId('smartfarm')!;
+    final energy = ServicesCatalog.byId('energy')!;
+    final youtube = ServicesCatalog.byId('youtube')!;
+    final store = ServicesCatalog.byId('store')!;
     final apps = ServicesCatalog.byId('apps')!;
 
     return Column(
       children: [
         _AreaBlock(
           service: monitoring,
-          title: '산업자동화 모니터링',
+          title: '산업자동화',
           subtitle: 'Tool · PLC · 데이터 저장 · MES',
           chips: const ['Tool 연동', 'PLC 물류·제어', 'CSV/Excel', 'MES 전송', '대시보드'],
           dark: true,
@@ -576,20 +551,44 @@ class AreaHighlightsSection extends StatelessWidget {
         ),
         _AreaBlock(
           service: smartfarm,
-          title: '스마트팜 개발',
-          subtitle: '센서 · 제어 · 관제 · 모바일 연동',
-          chips: const ['온습도 센서', '환기·관수 제어', '실시간 그래프', '알람', '모바일 보조'],
+          title: '스마트팜·농촌',
+          subtitle: '센서 · 제어 · 관제 · 농촌 데이터',
+          chips: const ['온습도 센서', '환기·관수 제어', '실시간 그래프', '알람', '농촌 현장 앱'],
           dark: false,
           onTap: () => onTap(smartfarm),
           imageAsset: smartfarm.imageAsset,
           imageCaption: smartfarm.imageCaption,
         ),
         _AreaBlock(
+          service: energy,
+          title: '에너지관리',
+          subtitle: '전력 · 설비 · 사용량 분석 · 절감 리포트',
+          chips: const ['전력 데이터', '장비별 사용량', '이상 알림', '절감 리포트', 'DB·API 연동'],
+          dark: true,
+          onTap: () => onTap(energy),
+        ),
+        _AreaBlock(
+          service: youtube,
+          title: '유튜브',
+          subtitle: '콘텐츠 · 채널 · 홍보 동선',
+          chips: const ['콘텐츠 기획', '영상 구성', '썸네일·설명', '랜딩 연계', '문의 CTA'],
+          dark: false,
+          onTap: () => onTap(youtube),
+        ),
+        _AreaBlock(
+          service: store,
+          title: '스토어',
+          subtitle: '상품 · 주문 · 문의 · 운영 데이터',
+          chips: const ['상품 소개', '주문 흐름', '판매 데이터', '외부 링크', '고객 관리'],
+          dark: true,
+          onTap: () => onTap(store),
+        ),
+        _AreaBlock(
           service: apps,
-          title: '앱·소프트웨어 개발',
+          title: '앱개발',
           subtitle: '농업 · 현장 · 생활 · 서비스 · AI',
           chips: const ['Flutter 앱', '농산물·직거래', '현장 입력', '생활·서비스', 'AI 자동화'],
-          dark: true,
+          dark: false,
           onTap: () => onTap(apps),
           visual: const _AppShowcaseVisual(),
         ),
@@ -623,7 +622,7 @@ class _AreaBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bg = dark ? const Color(0xFF0F172A) : const Color(0xFFF0FDF4);
+    final bg = dark ? const Color(0xFF0F172A) : service.accentColor.withValues(alpha: 0.08);
     final fg = dark ? Colors.white : const Color(0xFF0F172A);
     final subFg = dark ? const Color(0xFF94A3B8) : const Color(0xFF64748B);
 
@@ -888,7 +887,7 @@ class StrengthSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return _Section(
       title: '소통웨어 디지털랩의 강점',
-      subtitle: '공장·농장·앱 개발을 아우르는 현장 기반 소프트웨어 역량.',
+      subtitle: '6개 주력 사업을 아우르는 현장 기반 디지털 서비스 역량.',
       child: Container(
         padding: const EdgeInsets.all(26),
         decoration: BoxDecoration(
@@ -902,17 +901,32 @@ class StrengthSection extends StatelessWidget {
           children: const [
             StrengthItem(
               number: '01',
-              title: '산업 모니터링',
+              title: '산업자동화',
               desc: 'Tool·PLC·MES 연동, 공장 데이터 수집·분석·시각화.',
             ),
             StrengthItem(
               number: '02',
-              title: '스마트팜',
-              desc: '센서·제어·관제, 농장 환경 데이터와 알림 시스템.',
+              title: '스마트팜·농촌',
+              desc: '센서·제어·관제, 농장·농촌 환경 데이터와 알림 시스템.',
             ),
             StrengthItem(
               number: '03',
-              title: '다양한 앱 개발',
+              title: '에너지관리',
+              desc: '전력·설비 사용량 수집, 분석 대시보드와 절감 리포트.',
+            ),
+            StrengthItem(
+              number: '04',
+              title: '유튜브',
+              desc: '콘텐츠 기획, 영상 자료 구성, 랜딩·문의 동선 연계.',
+            ),
+            StrengthItem(
+              number: '05',
+              title: '스토어',
+              desc: '상품 소개, 주문·문의 흐름, 판매·운영 데이터 관리.',
+            ),
+            StrengthItem(
+              number: '06',
+              title: '앱개발',
               desc: '농업·현장·생활·서비스 앱, Flutter·Python·AI 연계.',
             ),
           ],
@@ -975,7 +989,7 @@ class ContactSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 const Text(
-                  '모니터링 · 스마트팜 · 앱 개발 관련 요구사항을 이메일로 보내주시면 '
+                  '산업자동화 · 스마트팜·농촌 · 에너지관리 · 유튜브 · 스토어 · 앱개발 관련 요구사항을 이메일로 보내주시면 '
                   '검토 후 회신드립니다. 상담은 이메일로만 진행합니다.',
                   style: TextStyle(color: Color(0xFFDBEAFE), fontSize: 16, height: 1.65),
                 ),
@@ -1063,7 +1077,7 @@ class FooterSection extends StatelessWidget {
       color: const Color(0xFF020617),
       child: Center(
         child: Text(
-          '© 2026 ${ServicesCatalog.brandName} · 산업 모니터링 · 스마트팜 · 앱 개발',
+          '© 2026 ${ServicesCatalog.brandName} · 산업자동화 · 스마트팜·농촌 · 에너지관리 · 유튜브 · 스토어 · 앱개발',
           style: const TextStyle(color: Color(0xFF94A3B8)),
         ),
       ),
