@@ -34,7 +34,7 @@ class ServiceDetailPage extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFEFF6FF),
+                        color: service.accentColor.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Icon(service.icon, size: 36, color: service.accentColor),
