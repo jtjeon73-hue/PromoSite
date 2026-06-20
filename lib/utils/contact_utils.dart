@@ -5,8 +5,8 @@ import '../data/services_catalog.dart';
 
 Future<void> openConsultationEmail({String? topic}) async {
   final subject = topic == null
-      ? '[소통웨어 상담] 프로젝트 문의'
-      : '[소통웨어 상담] $topic';
+      ? '[소통 플랫폼 문의] 서비스 상담'
+      : '[소통 플랫폼 문의] $topic';
   final body = ServicesCatalog.consultationEmailBody;
   final uri = Uri(
     scheme: 'mailto',

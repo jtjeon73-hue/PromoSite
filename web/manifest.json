@@ -1,11 +1,11 @@
 {
-  "name": "소통웨어 디지털랩",
-  "short_name": "PromoSite",
+  "name": "소통 플랫폼",
+  "short_name": "소통 플랫폼",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0F172A",
-  "theme_color": "#2563EB",
-  "description": "산업자동화 모니터링 · 스마트팜 · 앱·소프트웨어 개발",
+  "theme_color": "#6D5DF6",
+  "description": "소통사주 · 소통건강 · 소통팜지기 · 소통사매 Flutter Web 랜딩페이지",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": []
