@@ -61,7 +61,10 @@ class _DetailHero extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 8,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white.withValues(alpha: 0.16),
                       borderRadius: BorderRadius.circular(999),
@@ -69,7 +72,10 @@ class _DetailHero extends StatelessWidget {
                     ),
                     child: Text(
                       service.eyebrow,
-                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -86,7 +92,11 @@ class _DetailHero extends StatelessWidget {
                   const SizedBox(height: 18),
                   Text(
                     service.summary,
-                    style: const TextStyle(color: Color(0xFFFFF7FB), fontSize: 17, height: 1.7),
+                    style: const TextStyle(
+                      color: Color(0xFFFFF7FB),
+                      fontSize: 17,
+                      height: 1.7,
+                    ),
                   ),
                 ],
               );
@@ -103,11 +113,7 @@ class _DetailHero extends StatelessWidget {
               }
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  copy,
-                  const SizedBox(height: 28),
-                  visual,
-                ],
+                children: [copy, const SizedBox(height: 28), visual],
               );
             },
           ),
@@ -165,12 +171,18 @@ class _HeroPreview extends StatelessWidget {
               children: [
                 Text(
                   '핵심 가치',
-                  style: TextStyle(color: service.accentColor, fontWeight: FontWeight.w900),
+                  style: TextStyle(
+                    color: service.accentColor,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   service.outcomes.first,
-                  style: const TextStyle(color: Color(0xFF334155), height: 1.45),
+                  style: const TextStyle(
+                    color: Color(0xFF334155),
+                    height: 1.45,
+                  ),
                 ),
               ],
             ),
@@ -247,7 +259,9 @@ class _InfoGrid extends StatelessWidget {
           children: [
             for (final section in sections)
               SizedBox(
-                width: wide ? (constraints.maxWidth - 32) / 3 : constraints.maxWidth,
+                width: wide
+                    ? (constraints.maxWidth - 32) / 3
+                    : constraints.maxWidth,
                 child: _ListCard(service: service, section: section),
               ),
           ],
@@ -272,13 +286,20 @@ class _ListCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(26),
         border: Border.all(color: service.accentColor.withValues(alpha: 0.16)),
         boxShadow: const [
-          BoxShadow(color: Color(0x12312E81), blurRadius: 22, offset: Offset(0, 12)),
+          BoxShadow(
+            color: Color(0x12312E81),
+            blurRadius: 22,
+            offset: Offset(0, 12),
+          ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(section.title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900)),
+          Text(
+            section.title,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+          ),
           const SizedBox(height: 14),
           for (final item in section.items)
             Padding(
@@ -286,10 +307,20 @@ class _ListCard extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.check_circle, color: service.accentColor, size: 19),
+                  Icon(
+                    Icons.check_circle,
+                    color: service.accentColor,
+                    size: 19,
+                  ),
                   const SizedBox(width: 9),
                   Expanded(
-                    child: Text(item, style: const TextStyle(color: Color(0xFF475569), height: 1.45)),
+                    child: Text(
+                      item,
+                      style: const TextStyle(
+                        color: Color(0xFF475569),
+                        height: 1.45,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -324,9 +355,23 @@ class _NarrativeCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: TextStyle(color: service.accentColor, fontSize: 19, fontWeight: FontWeight.w900)),
+          Text(
+            title,
+            style: TextStyle(
+              color: service.accentColor,
+              fontSize: 19,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
           const SizedBox(height: 10),
-          Text(body, style: const TextStyle(color: Color(0xFF334155), height: 1.7, fontSize: 15)),
+          Text(
+            body,
+            style: const TextStyle(
+              color: Color(0xFF334155),
+              height: 1.7,
+              fontSize: 15,
+            ),
+          ),
         ],
       ),
     );
@@ -345,10 +390,7 @@ class _ConsultationCard extends StatelessWidget {
       padding: const EdgeInsets.all(26),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            service.gradientColors.first,
-            service.gradientColors.last,
-          ],
+          colors: [service.gradientColors.first, service.gradientColors.last],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -362,7 +404,11 @@ class _ConsultationCard extends StatelessWidget {
             children: [
               const Text(
                 '서비스 문의',
-                style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
@@ -372,7 +418,10 @@ class _ConsultationCard extends StatelessWidget {
               const SizedBox(height: 10),
               SelectableText(
                 ServicesCatalog.contactEmail,
-                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             ],
           );
@@ -395,11 +444,7 @@ class _ConsultationCard extends StatelessWidget {
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              copy,
-              const SizedBox(height: 20),
-              button,
-            ],
+            children: [copy, const SizedBox(height: 20), button],
           );
         },
       ),

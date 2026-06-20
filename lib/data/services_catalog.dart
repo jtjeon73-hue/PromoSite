@@ -36,10 +36,7 @@ class ServiceItem {
 }
 
 class ServiceDetailSection {
-  const ServiceDetailSection({
-    required this.title,
-    required this.body,
-  });
+  const ServiceDetailSection({required this.title, required this.body});
 
   final String title;
   final String body;
@@ -150,7 +147,8 @@ class ServicesCatalog {
       detailSections: [
         ServiceDetailSection(
           title: '콘텐츠 경험',
-          body: '오늘의 흐름, 주간 키워드, 관계·일·재물 테마를 카드로 구성해 빠르게 읽고 저장할 수 있는 경험을 제공합니다.',
+          body:
+              '오늘의 흐름, 주간 키워드, 관계·일·재물 테마를 카드로 구성해 빠르게 읽고 저장할 수 있는 경험을 제공합니다.',
         ),
         ServiceDetailSection(
           title: '상담 전환',
@@ -180,11 +178,7 @@ class ServicesCatalog {
         '웰니스 콘텐츠를 운영하는 브랜드',
         '가족·커뮤니티 기반 건강 챌린지를 준비하는 팀',
       ],
-      outcomes: [
-        '꾸준함을 만드는 루틴 UX',
-        '정보 과부하를 줄인 시각화',
-        '캠페인·콘텐츠 확장에 적합한 구조',
-      ],
+      outcomes: ['꾸준함을 만드는 루틴 UX', '정보 과부하를 줄인 시각화', '캠페인·콘텐츠 확장에 적합한 구조'],
       detailSections: [
         ServiceDetailSection(
           title: '루틴 관리',
@@ -220,11 +214,7 @@ class ServicesCatalog {
         '스마트팜 데이터를 쉽게 보여주려는 운영사',
         '농업 커뮤니티와 직거래를 연결하려는 파트너',
       ],
-      outcomes: [
-        '현장 중심의 간단한 입력 UX',
-        '데이터 기반 농장 운영 가시화',
-        '농가 커뮤니케이션 채널 확장',
-      ],
+      outcomes: ['현장 중심의 간단한 입력 UX', '데이터 기반 농장 운영 가시화', '농가 커뮤니케이션 채널 확장'],
       detailSections: [
         ServiceDetailSection(
           title: '농장 기록',
@@ -260,11 +250,7 @@ class ServicesCatalog {
         '상품 소개와 예약 문의를 한곳에 모으려는 운영자',
         '생활형 매칭·커머스 플랫폼을 준비하는 팀',
       ],
-      outcomes: [
-        '입점 매력을 보여주는 쇼케이스',
-        '문의와 예약으로 이어지는 전환 동선',
-        '지역 커뮤니티형 서비스 확장성',
-      ],
+      outcomes: ['입점 매력을 보여주는 쇼케이스', '문의와 예약으로 이어지는 전환 동선', '지역 커뮤니티형 서비스 확장성'],
       detailSections: [
         ServiceDetailSection(
           title: '매칭 흐름',
@@ -278,12 +264,7 @@ class ServicesCatalog {
     ),
   ];
 
-  static const platformSteps = [
-    '관심사 발견',
-    '서비스 선택',
-    '콘텐츠·기록 경험',
-    '상담·입점·제휴 전환',
-  ];
+  static const platformSteps = ['관심사 발견', '서비스 선택', '콘텐츠·기록 경험', '상담·입점·제휴 전환'];
 
   static ServiceItem? byId(String id) {
     for (final service in all) {

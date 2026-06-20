@@ -25,9 +25,9 @@ class SotongPlatformApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: const Color(0xFFF7F5FF),
         textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: const Color(0xFF111827),
-              displayColor: const Color(0xFF111827),
-            ),
+          bodyColor: const Color(0xFF111827),
+          displayColor: const Color(0xFF111827),
+        ),
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
@@ -105,9 +105,15 @@ class _PlatformLandingPageState extends State<PlatformLandingPage> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(Icons.check_circle_outline, size: 18, color: Color(0xFF6D5DF6)),
+                      const Icon(
+                        Icons.check_circle_outline,
+                        size: 18,
+                        color: Color(0xFF6D5DF6),
+                      ),
                       const SizedBox(width: 8),
-                      Expanded(child: Text(item, style: const TextStyle(height: 1.45))),
+                      Expanded(
+                        child: Text(item, style: const TextStyle(height: 1.45)),
+                      ),
                     ],
                   ),
                 ),
@@ -115,7 +121,10 @@ class _PlatformLandingPageState extends State<PlatformLandingPage> {
           ),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('닫기')),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('닫기'),
+          ),
           FilledButton(
             onPressed: () {
               Navigator.pop(context);
@@ -221,7 +230,9 @@ class PlatformTopNavigation extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 0.84),
                     borderRadius: BorderRadius.circular(28),
-                    border: Border.all(color: Colors.white.withValues(alpha: 0.72)),
+                    border: Border.all(
+                      color: Colors.white.withValues(alpha: 0.72),
+                    ),
                     boxShadow: const [
                       BoxShadow(
                         color: Color(0x1A312E81),
@@ -299,7 +310,11 @@ class _BrandMark extends StatelessWidget {
         const SizedBox(width: 12),
         const Text(
           ServicesCatalog.brandName,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, letterSpacing: -0.4),
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+            letterSpacing: -0.4,
+          ),
         ),
       ],
     );
@@ -345,7 +360,9 @@ class _MobileMenu extends StatelessWidget {
             avatar: Icon(service.icon, color: service.accentColor, size: 18),
             label: Text(service.title),
             onPressed: () => onTap(service),
-            side: BorderSide(color: service.accentColor.withValues(alpha: 0.22)),
+            side: BorderSide(
+              color: service.accentColor.withValues(alpha: 0.22),
+            ),
             backgroundColor: service.accentColor.withValues(alpha: 0.08),
           ),
       ],
@@ -385,11 +402,7 @@ class HeroSection extends StatelessWidget {
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              content,
-              const SizedBox(height: 34),
-              visual,
-            ],
+            children: [content, const SizedBox(height: 34), visual],
           );
         },
       ),
@@ -409,7 +422,9 @@ class _HeroCopy extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _GradientBadge(text: 'Flutter Web · Material 3 · Responsive Landing'),
+        const _GradientBadge(
+          text: 'Flutter Web · Material 3 · Responsive Landing',
+        ),
         const SizedBox(height: 24),
         Text(
           ServicesCatalog.tagline,
@@ -443,7 +458,10 @@ class _HeroCopy extends StatelessWidget {
             OutlinedButton.icon(
               onPressed: () => openConsultationEmail(),
               style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 22,
+                  vertical: 18,
+                ),
                 textStyle: const TextStyle(fontWeight: FontWeight.w800),
               ),
               icon: const Icon(Icons.alternate_email),
@@ -507,7 +525,11 @@ class _MetricPill extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         border: Border.all(color: Colors.white),
         boxShadow: const [
-          BoxShadow(color: Color(0x12312E81), blurRadius: 20, offset: Offset(0, 10)),
+          BoxShadow(
+            color: Color(0x12312E81),
+            blurRadius: 20,
+            offset: Offset(0, 10),
+          ),
         ],
       ),
       child: Column(
@@ -522,11 +544,18 @@ class _MetricPill extends StatelessWidget {
               letterSpacing: -1,
             ),
           ),
-          Text(metric.label, style: const TextStyle(fontWeight: FontWeight.w900)),
+          Text(
+            metric.label,
+            style: const TextStyle(fontWeight: FontWeight.w900),
+          ),
           const SizedBox(height: 4),
           Text(
             metric.description,
-            style: const TextStyle(color: Color(0xFF64748B), fontSize: 12, height: 1.35),
+            style: const TextStyle(
+              color: Color(0xFF64748B),
+              fontSize: 12,
+              height: 1.35,
+            ),
           ),
         ],
       ),
@@ -551,7 +580,11 @@ class _HeroVisual extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(38),
         boxShadow: const [
-          BoxShadow(color: Color(0x38312E81), blurRadius: 46, offset: Offset(0, 28)),
+          BoxShadow(
+            color: Color(0x38312E81),
+            blurRadius: 46,
+            offset: Offset(0, 28),
+          ),
         ],
       ),
       child: Stack(
@@ -559,12 +592,18 @@ class _HeroVisual extends StatelessWidget {
           Positioned(
             right: -48,
             top: -54,
-            child: _GlowOrb(color: const Color(0xFFFF6B8A).withValues(alpha: 0.45), size: 180),
+            child: _GlowOrb(
+              color: const Color(0xFFFF6B8A).withValues(alpha: 0.45),
+              size: 180,
+            ),
           ),
           Positioned(
             left: -38,
             bottom: 18,
-            child: _GlowOrb(color: const Color(0xFF38BDF8).withValues(alpha: 0.28), size: 170),
+            child: _GlowOrb(
+              color: const Color(0xFF38BDF8).withValues(alpha: 0.28),
+              size: 170,
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -574,15 +613,23 @@ class _HeroVisual extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(28),
-                  border: Border.all(color: Colors.white.withValues(alpha: 0.16)),
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.16),
+                  ),
                 ),
                 child: const Row(
                   children: [
-                    Icon(Icons.dashboard_customize_outlined, color: Colors.white),
+                    Icon(
+                      Icons.dashboard_customize_outlined,
+                      color: Colors.white,
+                    ),
                     SizedBox(width: 10),
                     Text(
                       'Platform Preview',
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
                     Spacer(),
                     Icon(Icons.circle, size: 10, color: Color(0xFF22C55E)),
@@ -622,7 +669,8 @@ class _HeroVisual extends StatelessWidget {
                             onTap: () => onServiceTap(service),
                           ),
                         ),
-                        if (service != ServicesCatalog.all.last) const SizedBox(height: 12),
+                        if (service != ServicesCatalog.all.last)
+                          const SizedBox(height: 12),
                       ],
                     ],
                   );
@@ -717,7 +765,11 @@ class _HeroServiceTile extends StatelessWidget {
                     service.shortDesc,
                     maxLines: compact ? 2 : 3,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(color: Color(0xFF64748B), height: 1.45, fontSize: 13),
+                    style: const TextStyle(
+                      color: Color(0xFF64748B),
+                      height: 1.45,
+                      fontSize: 13,
+                    ),
                   ),
                 ],
               ),
@@ -763,7 +815,9 @@ class ServicesShowcaseSection extends StatelessWidget {
                   for (final service in ServicesCatalog.all)
                     SizedBox(
                       key: keysByServiceId[service.id],
-                      width: wide ? (constraints.maxWidth - 18) / 2 : constraints.maxWidth,
+                      width: wide
+                          ? (constraints.maxWidth - 18) / 2
+                          : constraints.maxWidth,
                       child: ServiceFeatureCard(
                         service: service,
                         onTap: () => onServiceTap(service),
@@ -798,7 +852,11 @@ class ServiceFeatureCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(32),
         border: Border.all(color: service.accentColor.withValues(alpha: 0.14)),
         boxShadow: const [
-          BoxShadow(color: Color(0x14312E81), blurRadius: 28, offset: Offset(0, 16)),
+          BoxShadow(
+            color: Color(0x14312E81),
+            blurRadius: 28,
+            offset: Offset(0, 16),
+          ),
         ],
       ),
       child: Column(
@@ -825,12 +883,20 @@ class ServiceFeatureCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       service.title,
-                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900, letterSpacing: -0.7),
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: -0.7,
+                      ),
                     ),
                     const SizedBox(height: 8),
                     Text(
                       service.shortDesc,
-                      style: const TextStyle(color: Color(0xFF475569), height: 1.55, fontSize: 15),
+                      style: const TextStyle(
+                        color: Color(0xFF475569),
+                        height: 1.55,
+                        fontSize: 15,
+                      ),
                     ),
                   ],
                 ),
@@ -845,9 +911,14 @@ class ServiceFeatureCard extends StatelessWidget {
               for (final item in service.features.take(3))
                 Chip(
                   label: Text(item),
-                  labelStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                  labelStyle: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
                   backgroundColor: service.accentColor.withValues(alpha: 0.08),
-                  side: BorderSide(color: service.accentColor.withValues(alpha: 0.16)),
+                  side: BorderSide(
+                    color: service.accentColor.withValues(alpha: 0.16),
+                  ),
                 ),
             ],
           ),
@@ -935,7 +1006,11 @@ class PlatformJourneySection extends StatelessWidget {
           color: const Color(0xFF111827),
           borderRadius: BorderRadius.circular(36),
           boxShadow: const [
-            BoxShadow(color: Color(0x3320205A), blurRadius: 34, offset: Offset(0, 20)),
+            BoxShadow(
+              color: Color(0x3320205A),
+              blurRadius: 34,
+              offset: Offset(0, 20),
+            ),
           ],
         ),
         child: LayoutBuilder(
@@ -959,7 +1034,11 @@ class PlatformJourneySection extends StatelessWidget {
                 SizedBox(height: 14),
                 Text(
                   '각 메뉴의 성격은 다르지만 사용자는 같은 화면 규칙, 같은 CTA, 같은 신뢰감 안에서 서비스를 탐색합니다.',
-                  style: TextStyle(color: Color(0xFFCBD5E1), height: 1.7, fontSize: 16),
+                  style: TextStyle(
+                    color: Color(0xFFCBD5E1),
+                    height: 1.7,
+                    fontSize: 16,
+                  ),
                 ),
               ],
             );
@@ -976,11 +1055,7 @@ class PlatformJourneySection extends StatelessWidget {
             }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                copy,
-                const SizedBox(height: 30),
-                steps,
-              ],
+              children: [copy, const SizedBox(height: 30), steps],
             );
           },
         ),
@@ -1041,12 +1116,20 @@ class _JourneySteps extends StatelessWidget {
                   const SizedBox(height: 12),
                   Text(
                     ServicesCatalog.platformSteps[i],
-                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 17),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 17,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     _stepDescription(i),
-                    style: const TextStyle(color: Color(0xFFCBD5E1), height: 1.5, fontSize: 13),
+                    style: const TextStyle(
+                      color: Color(0xFFCBD5E1),
+                      height: 1.5,
+                      fontSize: 13,
+                    ),
                   ),
                 ],
               ),
@@ -1080,7 +1163,8 @@ class BrandExperienceSection extends StatelessWidget {
           const _SectionHeading(
             eyebrow: 'Design System',
             title: '고급 랜딩페이지 디자인',
-            subtitle: '부드러운 그라데이션, 유리 질감 카드, 명확한 CTA, 서비스별 컬러를 사용해 프리미엄 브랜드 인상을 만듭니다.',
+            subtitle:
+                '부드러운 그라데이션, 유리 질감 카드, 명확한 CTA, 서비스별 컬러를 사용해 프리미엄 브랜드 인상을 만듭니다.',
           ),
           const SizedBox(height: 28),
           LayoutBuilder(
@@ -1095,7 +1179,8 @@ class BrandExperienceSection extends StatelessWidget {
                 const _ExperienceCard(
                   icon: Icons.palette_outlined,
                   title: 'Material 3 감성',
-                  desc: 'ColorScheme, FilledButton, Chip, Card 계열 위젯을 Material 3 스타일로 통일했습니다.',
+                  desc:
+                      'ColorScheme, FilledButton, Chip, Card 계열 위젯을 Material 3 스타일로 통일했습니다.',
                 ),
                 const _ExperienceCard(
                   icon: Icons.auto_graph_outlined,
@@ -1150,7 +1235,11 @@ class _ExperienceCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         border: Border.all(color: Colors.white),
         boxShadow: const [
-          BoxShadow(color: Color(0x12312E81), blurRadius: 24, offset: Offset(0, 12)),
+          BoxShadow(
+            color: Color(0x12312E81),
+            blurRadius: 24,
+            offset: Offset(0, 12),
+          ),
         ],
       ),
       child: Column(
@@ -1166,9 +1255,15 @@ class _ExperienceCard extends StatelessWidget {
             child: Icon(icon, color: const Color(0xFF6D5DF6)),
           ),
           const SizedBox(height: 18),
-          Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+          Text(
+            title,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+          ),
           const SizedBox(height: 10),
-          Text(desc, style: const TextStyle(color: Color(0xFF64748B), height: 1.65)),
+          Text(
+            desc,
+            style: const TextStyle(color: Color(0xFF64748B), height: 1.65),
+          ),
         ],
       ),
     );
@@ -1200,7 +1295,11 @@ class ContactSection extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(38),
           boxShadow: const [
-            BoxShadow(color: Color(0x33581C87), blurRadius: 38, offset: Offset(0, 20)),
+            BoxShadow(
+              color: Color(0x33581C87),
+              blurRadius: 38,
+              offset: Offset(0, 20),
+            ),
           ],
         ),
         child: LayoutBuilder(
@@ -1222,17 +1321,28 @@ class ContactSection extends StatelessWidget {
                 const SizedBox(height: 14),
                 const Text(
                   '서비스 제휴, 입점, 콘텐츠 협업, Flutter Web 개발 문의를 이메일로 보내주세요.',
-                  style: TextStyle(color: Color(0xFFFFE4F0), fontSize: 16, height: 1.7),
+                  style: TextStyle(
+                    color: Color(0xFFFFE4F0),
+                    fontSize: 16,
+                    height: 1.7,
+                  ),
                 ),
                 const SizedBox(height: 18),
                 SelectableText(
                   ServicesCatalog.contactEmail,
-                  style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   ServicesCatalog.responseTimeLabel,
-                  style: TextStyle(color: Colors.white.withValues(alpha: 0.84), fontSize: 13),
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.84),
+                    fontSize: 13,
+                  ),
                 ),
               ],
             );
@@ -1254,7 +1364,10 @@ class ContactSection extends StatelessWidget {
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.white,
                     side: const BorderSide(color: Colors.white70),
-                    padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 22,
+                      vertical: 18,
+                    ),
                     textStyle: const TextStyle(fontWeight: FontWeight.w800),
                   ),
                   icon: const Icon(Icons.checklist_outlined),
@@ -1274,11 +1387,7 @@ class ContactSection extends StatelessWidget {
             }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                copy,
-                const SizedBox(height: 28),
-                actions,
-              ],
+              children: [copy, const SizedBox(height: 28), actions],
             );
           },
         ),
@@ -1306,7 +1415,10 @@ class FooterSection extends StatelessWidget {
             children: [
               const Text(
                 '© 2026 소통 플랫폼',
-                style: TextStyle(color: Color(0xFFCBD5E1), fontWeight: FontWeight.w700),
+                style: TextStyle(
+                  color: Color(0xFFCBD5E1),
+                  fontWeight: FontWeight.w700,
+                ),
               ),
               Text(
                 ServicesCatalog.all.map((service) => service.title).join(' · '),
@@ -1360,7 +1472,11 @@ class _SectionHeading extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 720),
           child: Text(
             subtitle,
-            style: const TextStyle(color: Color(0xFF64748B), height: 1.7, fontSize: 16),
+            style: const TextStyle(
+              color: Color(0xFF64748B),
+              height: 1.7,
+              fontSize: 16,
+            ),
           ),
         ),
       ],
@@ -1384,7 +1500,12 @@ class _LandingSection extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
     final horizontal = width < 620 ? 18.0 : 32.0;
     return Padding(
-      padding: EdgeInsets.fromLTRB(horizontal, topPadding, horizontal, bottomPadding),
+      padding: EdgeInsets.fromLTRB(
+        horizontal,
+        topPadding,
+        horizontal,
+        bottomPadding,
+      ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1180),

@@ -36,7 +36,11 @@ class ShowcaseImageCard extends StatelessWidget {
               errorBuilder: (_, __, ___) => Container(
                 color: const Color(0xFF1E293B),
                 alignment: Alignment.center,
-                child: const Icon(Icons.image_not_supported_outlined, color: Color(0xFF94A3B8), size: 36),
+                child: const Icon(
+                  Icons.image_not_supported_outlined,
+                  color: Color(0xFF94A3B8),
+                  size: 36,
+                ),
               ),
             ),
           ),
